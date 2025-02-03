@@ -48,10 +48,10 @@ class cUtils {
 
 
     // Error Handler
-    public static function errorMessage ($isWhat)// $isWhat - what's wrong with the number
+    public static function errorMessage ($number)
     {
         $error = array(
-            'number' => $isWhat,
+            'number' => $number,
             'error' => true // Maybe, maybe not :)
         );
 
