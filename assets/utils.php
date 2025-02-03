@@ -48,14 +48,21 @@ class cUtils {
 
 
     // Error Handler
-    public static function errorMessage ($number)
+    public static function errorMessage ($number=null)
     {
-        $error = array(
-            'number' => $number,
-            'error' => true // Maybe, maybe not :)
-        );
+        if (isset($number)){
+            $error = array(
+                'number' => $number,
+                'error' => true // Maybe, maybe not :)
+            );
+            return $error;
+        }
 
-        return $error;
+        return ['error' => true];
+        
+
+
+        
     } 
 
     

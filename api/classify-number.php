@@ -6,7 +6,7 @@ use Number\Number;
 
 
 if (!isset($_GET['number']) || empty(trim($_GET['number']))) {
-    return cUtils::outputData(false, cUtils::errorMessage("Pass a number"), true, 400);
+    return cUtils::outputData(false, cUtils::errorMessage(), true, 400);
 }
 $number = trim($_GET['number']);
 

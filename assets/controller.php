@@ -83,8 +83,9 @@ class Number
 
     // Sum of digits
     public static function digitSum($number): int {
-        return array_sum(str_split((string) $number));
-    }
+        $sum = array_sum(str_split((string) abs($number))); // Get absolute digit sum
+        return ($number < 0) ? -$sum : $sum; // If original number was negative, return negative sum
+    }    
 
     // Get fun fact
     public static function getFunFact($number): string {
