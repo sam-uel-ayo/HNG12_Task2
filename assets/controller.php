@@ -8,19 +8,19 @@ class Number
     public static function classifyNumber($number)
     {
 
-        if (!is_numeric($number)) { // Check if input is numeric
+        if (!is_numeric($number)) { 
             return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
         }
         
-        if (filter_var($number, FILTER_VALIDATE_FLOAT) === false) { // Check if input is a floating-point number
+        if (!filter_var($number, FILTER_VALIDATE_INT)) { 
             return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
         }
         
-        if ($number> PHP_INT_MAX) { // Check if input is an extremely large number
+        if ($number> PHP_INT_MAX) { 
             return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
         }
         
-
+        // Return Response
         $data =  [
             "number" => $number,
             "is_prime" => self::isPrime($number),
