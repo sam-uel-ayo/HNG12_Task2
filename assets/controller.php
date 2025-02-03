@@ -7,6 +7,18 @@ class Number
 {
     public static function classifyNumber($number)
     {
+
+        if (!is_numeric($number)) { // Check if input is numeric
+            return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
+        }
+        
+        if (filter_var($number, FILTER_VALIDATE_FLOAT) === false) { // Check if input is a floating-point number
+            return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
+        }
+        
+        if ($number> PHP_INT_MAX) { // Check if input is an extremely large number
+            return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
+        }
         
 
         $data =  [
