@@ -7,10 +7,6 @@ class Number
 {
     public static function classifyNumber($number)
     {
-
-        // Debugging (Remove after testing)
-        var_dump($number);
-
         if (filter_var($number, FILTER_VALIDATE_INT) === false) { 
             return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
         }
@@ -18,7 +14,6 @@ class Number
         // Convert to integer
         $number = (int) $number;
 
-        // Edge case: Check for overflow (though unlikely)
         if ($number > PHP_INT_MAX) { 
             return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
         }
