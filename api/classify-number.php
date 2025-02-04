@@ -5,8 +5,9 @@ use cUtils\cUtils;
 use Number\Number;
 
 
-if (!isset($_GET['number']) || empty(trim($_GET['number']))) {
+if (!isset($_GET['number']) || strlen(trim($_GET['number'])) === "") {
     return cUtils::outputData(false, cUtils::errorMessage(), true, 400);
+    exit;
 }
 $number = trim($_GET['number']);
 

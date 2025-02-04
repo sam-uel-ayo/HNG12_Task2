@@ -8,21 +8,24 @@ class Number
     public static function classifyNumber($number)
     {
 
-        if (!is_numeric($number)) { 
+        // Debugging (Remove after testing)
+        var_dump($number);
+
+        if (filter_var($number, FILTER_VALIDATE_INT) === false) { 
             return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
         }
-        
-        if (!filter_var($number, FILTER_VALIDATE_INT)) { 
-            return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
-        }
-        
-        if ($number> PHP_INT_MAX) { 
+
+        // Convert to integer
+        $number = (int) $number;
+
+        // Edge case: Check for overflow (though unlikely)
+        if ($number > PHP_INT_MAX) { 
             return json_decode(cUtils::returnData(false, cUtils::errorMessage($number), true, 400));
         }
         
         // Return Response
         $data =  [
-            "number" => $number,
+            "number" => (int)$number,
             "is_prime" => self::isPrime($number),
             "is_perfect" => self::isPerfect($number),
             "properties" => self::getProperties($number),
